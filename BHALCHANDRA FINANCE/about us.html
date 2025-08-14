@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhalchandra Finance</title>
+
+    <!-- Boxicons -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background-color:#1e3a8a;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn1 {
+            background-color: white;
+            color: #1e3a8a;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .title {
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .column {
+            flex: 1 1 250px;
+            max-width: 300px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .close {
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+.custom-footer {
+  background-color: #1e3a8a;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  padding: 40px 20px 20px;
+}
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+.footer-column {
+  flex: 1 1 220px;
+  margin: 20px;
+}
+.footer-column h4 {
+  font-size: 16px;
+  color: #18BC9C;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #18BC9C;
+  padding-bottom: 5px;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-column ul li {
+  margin: 8px 0;
+}
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-column ul li a:hover {
+  color: #18BC9C;
+}
+.footer-column p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.social-icons a {
+  display: inline-block;
+  margin: 0 5px;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+.social-icons a:hover {
+  color: #18BC9C;
+}
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 30px;
+  border-top: 1px solid #18BC9C;
+  padding-top: 10px;
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="admin.html" class="btn1">Admin Login</a>
+        <a href="index.html" class="logo">Bhalchandra Finance</a>
+        <ul class="navbar">
+            <li><a href="about us.html">Contact us</a></li>
+            <li><a href="Feedback.html">Feedback</a></li>
+        </ul>
+    </header>
+
+    <h2 class="title">Our Team</h2>
+
+    <div class="row">
+        <div class="column" data-aos="fade-up">
+            <div class="card" onclick="openModal('Mr. Malhar Kulkarni', 'Technical Support', '9359240126', 'malharkulkarni86@gmail.com')">
+                <h2>Mr. Malhar Kulkarni</h2>
+                <p>Technical Support</p>
+                <p>Mobile No: 9359240126</p>
+                <p>malharkulkarni86@gmail.com</p>
+                <a href="#" class="btn1">Contact</a>
+            </div>
+        </div>
+
+        <div class="column" data-aos="fade-up" data-aos-delay="100">
+            <div class="card" onclick="openModal('Ms. Anjali Raut', 'Marketing Support', '9156000050', 'anjaliraut2002@example.com')">
+                <h2>Ms. Anjali Raut</h2>
+                <p>Marketing Support</p>
+                <p>Mobile No: 9156000050</p>
+                <p>anjaliraut2002@example.com</p>
+                <a href="#" class="btn1">Contact</a>
+            </div>
+        </div>
+
+        <div class="column" data-aos="fade-up" data-aos-delay="200">
+            <div class="card" onclick="openModal('Mr. Ritesh Suryawanshi', 'Finance Help', '7387318896', 'riteshs@example.com')">
+                <h2>Mr. Ritesh Suryawanshi</h2>
+                <p>Finance Help</p>
+                <p>Mobile No: 7387318896</p>
+                <p>riteshs@example.com</p>
+                <a href="#" class="btn1">Contact</a>
+            </div>
+        </div>
+
+        <div class="column" data-aos="fade-up" data-aos-delay="300">
+            <div class="card" onclick="openModal('Ms. Nikita Sontakke ', 'Finance Help', '7066179162', 'nikitas@example.com')">
+                <h2>Ms. Nikita Sontakke</h2>
+                <p>Finance Help</p>
+                <p>Mobile No: 7066179162</p>
+                <p>nikitas@example.com</p>
+                <a href="#" class="btn1">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-name"></h2>
+            <p id="modal-role"></p>
+            <p id="modal-phone"></p>
+            <p id="modal-email"></p>
+        </div>
+    </div>
+<!-- Footer -->
+<footer class="custom-footer mt-12">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Important Links</h4>
+      <ul>
+        <li><a href="https://www.rbi.org.in/commonperson/english/scripts/Notification.aspx?Id=900" target="_blank" rel="noopener noreferrer">RBI Guidelines</a></li>
+        <li><a href="#">KYC Policy</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="interest.html">Interest Rates</a></li>
+        <li><a href="#">Download Forms</a></li>
+        <li><a href="#">Contact Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="home.html">Home Page</a></li>
+        <li><a href="loan.html">Loan Application Form</a></li>
+        <li><a href="about us.html">About Us</a></li>
+        <li><a href="Feedback.html">Feedback</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Contact Info</h4>
+      <p>
+        Bhalchandra Finance Pvt. Ltd.<br>
+        Jintur, Parbhani, Maharashtra<br>
+        Phone: +91-9422547906<br>
+        Email: info@bhalfinance.in
+      </p>
+      <div class="social-icons">
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-instagram"></i></a>
+        <a href="#"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Bhalchandra Finance Ltd. All Rights Reserved.
+  </div>
+</footer>
+
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        function openModal(name, role, phone, email) {
+            document.getElementById('modal-name').innerText = name;
+            document.getElementById('modal-role').innerText = role;
+            document.getElementById('modal-phone').innerText = 'Phone: ' + phone;
+            document.getElementById('modal-email').innerText = 'Email: ' + email;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('modal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

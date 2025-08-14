@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bhalchandra Finance Private Ltd</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f6f9fc 0%, #edf2f7 100%);
+        }
+        .gradient-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: transform 0.3s ease;
+        }
+        .gradient-card:hover {
+            transform: translateY(-5px);
+        }
+        .chart-container {
+            width: 100%;
+            height: 300px;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .slide-in {
+            animation: slideIn 0.5s ease forwards;
+        }
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .home-gradient {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .chatbot-container {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            z-index: 999;
+            display: none;
+        }
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #3498db;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+.custom-footer {
+  background-color: #1e3a8a;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  padding: 40px 20px 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-column {
+  flex: 1 1 220px;
+  margin: 20px;
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  color: #18BC9C;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #18BC9C;
+  padding-bottom: 5px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin: 8px 0;
+}
+
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+  color: #18BC9C;
+}
+
+.footer-column p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 5px;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #18BC9C;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 30px;
+  border-top: 1px solid #18BC9C;
+  padding-top: 10px;
+}
+
+    </style>
+</head>
+<body>
+    
+       <!-- Homepage -->
+<div id="homepage" class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center bg-white p-1 rounded">
+                        <img src="logo.jpg" alt="Bhalchandra Logo" class="h-16 w-auto">
+                        <span class="ml-3 text-2xl font-bold text-gray-800">Bhalchandra Finance Pvt. Ltd.</span>
+                    </div>
+                </div>
+
+
+                        <div class="flex items-center space-x-4">
+                            <button onclick="showLoginForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition duration-300">Login</button>
+                            <button onclick="toggleCalculators()" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition duration-300">Calculators</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Hero Section -->
+            <div class="home-gradient text-white py-20">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="fade-in">
+                            <h1 class="text-4xl font-bold mb-6">Empowering Your Financial Future</h1>
+                            <p class="text-xl mb-8">Bhalchandra Finance offers tailored loan solutions to meet your personal and business needs with competitive interest rates.</p>
+                            <div class="flex space-x-4">
+                                <button onclick="scrollToLoans()" class="bg-white text-blue-800 hover:bg-gray-100 font-medium px-6 py-3 rounded-lg transition duration-300">Explore Loans</button>
+                                <button onclick="showLoginForm()" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-800 font-medium px-6 py-3 rounded-lg transition duration-300">Get Started</button>
+                            </div>
+                        </div>
+                        <div class="float flex justify-center">
+                            <img src="https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Financial Growth" class="rounded-lg shadow-xl max-w-md w-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Varieties Section -->
+            <div id="loans-section" class="py-16 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Loan Products</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                            <div class="h-48 overflow-hidden">
+                                <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Home Loan">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2 text-gray-800">Home Loan</h3>
+                                <p class="text-gray-600 mb-4">Make your dream home a reality with our competitive home loan packages starting at just 7.5% interest rate.</p>
+                                <button onclick="showLoginForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition duration-300">Apply Now</button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                            <div class="h-48 overflow-hidden">
+                                <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Business Loan">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2 text-gray-800">Business Loan</h3>
+                                <p class="text-gray-600 mb-4">Grow your business with our flexible business financing options with minimal documentation required.</p>
+                                <button onclick="showLoginForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition duration-300">Apply Now</button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                            <div class="h-48 overflow-hidden">
+                                <img class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1589758438368-0ad531db3366?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Gold Loan">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2 text-gray-800">Gold Loan</h3>
+                                <p class="text-gray-600 mb-4">Get immediate funds against your gold jewelry with the highest value per gram in the market.</p>
+                                <button onclick="showLoginForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition duration-300">Apply Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advertisement Banner -->
+            <div class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 py-10 my-8">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row items-center justify-between">
+                        <div class="text-white mb-6 md:mb-0">
+                            <h3 class="text-2xl font-bold mb-2">Special Offer!</h3>
+                            <p class="text-lg">Get Personal Loans at just 8.99% interest rate for a limited time</p>
+                        </div>
+                        <button onclick="showLoginForm()" class="bg-white text-pink-600 hover:bg-gray-100 font-bold px-6 py-3 rounded-lg transition duration-300">
+                            Avail Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculators (Hidden by default) -->
+            <div id="calculators" class="hidden py-16 bg-gray-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Financial Calculators</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Interest Rate Calculator -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden p-6">
+                            <h3 class="text-xl font-bold mb-4 text-gray-800">Interest Rate Calculator</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Loan Amount (₹)</label>
+                                    <input id="loanAmount" type="number" placeholder="Enter loan amount" class="w-full p-3 border rounded">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Interest Rate (%)</label>
+                                    <input id="interestRate" type="number" placeholder="Enter interest rate" class="w-full p-3 border rounded">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Loan Tenure (in months)</label>
+                                    <input id="loanTenure" type="number" placeholder="Enter loan tenure" class="w-full p-3 border rounded">
+                                </div>
+                                <button onclick="calculateEMI()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition duration-300 w-full">Calculate EMI</button>
+                                <div id="emiResult" class="hidden p-4 bg-blue-50 rounded-lg border border-blue-200"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gold Loan Calculator -->
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden p-6">
+                            <h3 class="text-xl font-bold mb-4 text-gray-800">Gold Loan Calculator</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Gold Weight (in grams)</label>
+                                    <input id="goldWeight" type="number" placeholder="Enter gold weight" class="w-full p-3 border rounded">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Gold Purity</label>
+                                    <select id="goldPurity" class="w-full p-3 border rounded">
+                                        <option value="24">24 Karat</option>
+                                        <option value="22">22 Karat</option>
+                                        <option value="18">18 Karat</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2">Current Gold Rate (₹ per gram)</label>
+                                    <input id="goldRate" type="number" placeholder="Enter current gold rate" class="w-full p-3 border rounded" value="5900">
+                                </div>
+                                <button onclick="calculateGoldLoan()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded transition duration-300 w-full">Calculate Loan Amount</button>
+                                <div id="goldLoanResult" class="hidden p-4 bg-blue-50 rounded-lg border border-blue-200"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="custom-footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Important Links</h4>
+      <ul>
+  <li><a href="#">RBI Guidelines</a></li>
+  <li><a href="#">KYC Policy</a></li>
+  <li><a href="#">Privacy Policy</a></li>
+  <li><a href="#">Terms & Conditions</a></li>
+  <li><a href="#">FAQs</a></li>
+  <li><a href="#">Interest Rates</a></li>
+  <li><a href="#">Download Forms</a></li>
+  <li><a href="#">Contact Support</a></li>
+</ul>
+
+    </div>
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home Page</a></li>
+        <li><a href="#">Loan Application Form</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="Feedback.html">Feedback</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Contact Info</h4>
+      <p>Bhalchandra Finance Pvt.Ltd.<br>
+      Jintur, Parbhani, Maharashtra<br>
+      Phone: +91-9422547906<br>
+      Email: info@bhalfinance.in</p>
+         </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Bhalchandra Finance Ltd. All Rights Reserved.
+  </div>
+</footer>
+
+        </div>
+
+       <!-- Login Section -->
+<div id="loginSection" class="hidden flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+        <div class="flex items-center justify-center mb-6">
+            <img src="logo.jpg" alt="Bhalchandra Logo" class="h-16 w-auto bg-white p-1 rounded">
+            <h2 class="text-2xl font-bold ml-3 text-gray-800">Bhalchandra Finance</h2>
+        </div>
+        <div class="space-y-4">
+            <input type="text" id="username" placeholder="Username" class="w-full p-3 border rounded">
+            <input type="password" id="password" placeholder="Password" class="w-full p-3 border rounded">
+            <button onclick="login()" class="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700 transition">Login</button>
+            <button onclick="backToHome()" class="w-full bg-gray-200 text-gray-800 p-3 rounded hover:bg-gray-300 transition">Back to Home</button>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Admin Dashboard -->
+        <div id="adminDashboard" class="hidden p-6">
+            <nav class="bg-white shadow-lg mb-6 p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <img src="logo.jpg" alt="Bhalchandra Logo" class="h-16 w-auto bg-white p-1 rounded">
+                        <h1 class="text-2xl font-bold text-gray-800 ml-2">Admin Dashboard</h1>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button onclick="backToHome()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Home</button>
+                        <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</button>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="gradient-card p-6 rounded-lg text-white">
+                    <h3 class="text-lg font-semibold">Total Loans</h3>
+                    <p class="text-3xl font-bold">152</p>
+                </div>
+                <div class="gradient-card p-6 rounded-lg text-white">
+                    <h3 class="text-lg font-semibold">Amount Disbursed</h3>
+                    <p class="text-3xl font-bold">₹1.2Cr</p>
+                </div>
+                <div class="gradient-card p-6 rounded-lg text-white">
+                    <h3 class="text-lg font-semibold">Pending Loans</h3>
+                    <p class="text-3xl font-bold">23</p>
+                </div>
+                <div class="gradient-card p-6 rounded-lg text-white">
+                    <h3 class="text-lg font-semibold">Growth Rate</h3>
+                    <p class="text-3xl font-bold">+15%</p>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Business Growth Analytics</h2>
+                <div class="chart-container" id="growthChart"></div>
+            </div>
+
+            <div class="mt-8 bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Recent Feedbacks</h2>
+                <div class="space-y-4" id="feedbackList"></div>
+            </div>
+<footer class="custom-footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Important Links</h4>
+      <ul>
+        <li><a href="#">RBI Guidelines</a></li>
+        <li><a href="#">KYC Policy</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Interest Rates</a></li>
+        <li><a href="#">Download Forms</a></li>
+        <li><a href="#">Contact Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home Page</a></li>
+        <li><a href="#">Loan Application Form</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="Feedback.html">Feedback</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Contact Info</h4>
+      <p>Bhalchandra Finance Pvt.Ltd.<br>
+         Jintur, Parbhani, Maharashtra<br>
+         Phone: +91-9422547906<br>
+         Email: info@bhalfinance.in</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Bhalchandra Finance Ltd. All Rights Reserved.
+  </div>
+</footer>
+
+        </div>
+
+        <!-- User Dashboard -->
+	
+        <div id="userDashboard" class="hidden p-6">
+            <nav class="bg-white shadow-lg mb-6 p-4 rounded-lg">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <img src="logo.jpg" alt="Bhalchandra Logo" class="h-16 w-auto bg-white p-1 rounded">
+                        <h1 class="text-2xl font-bold text-gray-800 ml-2">User Dashboard</h1>
+                    </div>
+                    <div class="flex space-x-4">
+                        <button onclick="backToHome()" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Home</button>
+                        <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</button>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="gradient-card p-6 rounded-lg text-white cursor-pointer" onclick="showLoanApplication()">
+                    <i class="bi bi-cash-coin text-3xl mb-2"></i>
+                    <h3 class="text-lg font-semibold">Apply for New Loan</h3>
+                </div>
+                <div class="gradient-card p-6 rounded-lg text-white">
+                    <i class="bi bi-graph-up text-3xl mb-2"></i>
+                    <h3 class="text-lg font-semibold">CIBIL Score</h3>
+                    <p class="text-3xl font-bold">750</p>
+                </div>
+                <div class="gradient-card p-6 rounded-lg text-white">
+                    <i class="bi bi-file-earmark-text text-3xl mb-2"></i>
+                    <h3 class="text-lg font-semibold">Active Loans</h3>
+                    <p class="text-xl">2 Active Loans</p>
+                </div>
+            </div>
+
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h2 class="text-xl font-bold mb-4">Loan Statements</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                            <span>January 2024</span>
+                            <button class="text-blue-600"><i class="bi bi-download"></i></button>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                            <span>December 2023</span>
+                            <button class="text-blue-600"><i class="bi bi-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h2 class="text-xl font-bold mb-4">Documents</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                            <span>Loan Agreement</span>
+                            <button class="text-blue-600"><i class="bi bi-download"></i></button>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                            <span>Payment Schedule</span>
+                            <button class="text-blue-600"><i class="bi bi-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+		
+            </div>
+
+<style>
+  .dashboard-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .dashboard-section ul {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    color: #374151;
+  }
+
+  .dashboard-section textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .dashboard-section button:hover {
+    background-color: #2563eb;
+  }
+
+  .feedback-submitted {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .interactive-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .interactive-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    color: #1f2937;
+  }
+
+  details[open] summary {
+    color: #2563eb;
+  }
+</style>
+
+<script>
+  function submitFeedback() {
+    const feedback = document.getElementById('feedbackText');
+    const confirmation = document.getElementById('feedbackConfirmation');
+    if (feedback && feedback.value.trim()) {
+      confirmation.classList.remove('hidden');
+      setTimeout(() => {
+        confirmation.classList.add('hidden');
+        feedback.value = '';
+      }, 3000);
+    }
+  }
+</script>
+
+<!-- Enhanced Interactive User Dashboard -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 dashboard-section">
+  <div class="bg-white rounded-lg shadow p-6 interactive-card">
+    <details>
+      <summary class="text-xl">💳 Payment Options</summary>
+      <ul class="space-y-2 mt-2">
+        <li><i class="bi bi-credit-card mr-2 text-blue-600"></i>UPI (Google Pay, PhonePe, Paytm)</li>
+        <li><i class="bi bi-bank mr-2 text-blue-600"></i>Net Banking</li>
+        <li><i class="bi bi-credit-card-2-front mr-2 text-blue-600"></i>Credit/Debit Card</li>
+        <li><i class="bi bi-currency-exchange mr-2 text-blue-600"></i>Bank Transfer (NEFT/RTGS)</li>
+      </ul>
+    </details>
+  </div>
+
+  <div class="bg-white rounded-lg shadow p-6 interactive-card">
+    <details>
+      <summary class="text-xl">✅ Eligibility Criteria</summary>
+      <ul class="space-y-2 mt-2">
+        <li><i class="bi bi-person-check mr-2 text-green-600"></i>Age: 21 to 60 years</li>
+        <li><i class="bi bi-wallet2 mr-2 text-green-600"></i>Min income: ₹15,000/month</li>
+        <li><i class="bi bi-card-list mr-2 text-green-600"></i>Valid ID & address proof</li>
+        <li><i class="bi bi-graph-up-arrow mr-2 text-green-600"></i>CIBIL score ≥ 650</li>
+      </ul>
+    </details>
+  </div>
+
+  <div class="bg-white rounded-lg shadow p-6 interactive-card">
+    <details>
+      <summary class="text-xl">📜 Terms & Conditions</summary>
+      <ul class="space-y-2 mt-2">
+        <li><i class="bi bi-shield-check mr-2 text-yellow-600"></i>Subject to credit approval</li>
+        <li><i class="bi bi-cash-stack mr-2 text-yellow-600"></i>Processing fees applicable</li>
+        <li><i class="bi bi-calendar-range mr-2 text-yellow-600"></i>Max loan tenure: 5 years</li>
+        <li><i class="bi bi-arrow-repeat mr-2 text-yellow-600"></i>Early repayment charges may apply</li>
+      </ul>
+    </details>
+  </div>
+
+ 
+       </button>
+<div class="bg-white rounded-lg shadow p-6 interactive-card">
+  <details open>
+    <summary class="text-xl">💬 Feedback</summary>
+    <a href="Feedback.html">Feedback page</a>
+  </details>
+</div>
+
+</div>
+<footer class="custom-footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Important Links</h4>
+      <ul>
+        <li><a href="#">RBI Guidelines</a></li>
+        <li><a href="#">KYC Policy</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Interest Rates</a></li>
+        <li><a href="#">Download Forms</a></li>
+        <li><a href="#">Contact Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home Page</a></li>
+        <li><a href="#">Loan Application Form</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Feedback</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Contact Info</h4>
+      <p>Bhalchandra Finance Pvt.Ltd.<br>
+         Jintur, Parbhani, Maharashtra<br>
+         Phone: +91-9422547906<br>
+         Email: info@bhalfinance.in</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Bhalchandra Finance Ltd. All Rights Reserved.
+  </div>
+</footer>
+        </div>
+
+    </div>
+ 
+
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbotToggle" class="chatbot-toggle bg-blue-600 text-white rounded-full p-3 shadow-lg hover:bg-blue-700 transition">
+        <i class="bi bi-chat-dots-fill text-xl"></i>
+    </button>
+
+    <!-- Chatbot Container -->
+    <div id="chatbotContainer" class="chatbot-container bg-white rounded-lg shadow-xl overflow-hidden flex flex-col">
+        <div class="bg-blue-600 text-white p-4 flex justify-between items-center">
+            <h3 class="font-medium">Bhalchandra Assistant</h3>
+            <button id="closeChatbot" class="text-white hover:text-gray-200">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+        <div id="chatMessages" class="flex-grow p-4 overflow-y-auto bg-gray-50 space-y-4">
+            <div class="bg-blue-100 p-3 rounded-lg max-w-3/4 ml-auto">
+                <p>Hello! How can I help you today?</p>
+            </div>
+        </div>
+        <div class="border-t p-4 flex">
+            <input type="text" id="chatInput" placeholder="Type your message..." class="flex-grow border rounded-l p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <button id="sendMessage" class="bg-blue-600 text-white px-4 rounded-r hover:bg-blue-700 transition">
+                <i class="bi bi-send"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Current screen state
+        let currentScreen = "homepage";
+
+        // Show Login Form
+        function showLoginForm() {
+            document.getElementById('homepage').classList.add('hidden');
+            document.getElementById('loginSection').classList.remove('hidden');
+            currentScreen = "login";
+        }
+
+        // Back to Home
+        function backToHome() {
+            document.getElementById('loginSection').classList.add('hidden');
+            document.getElementById('adminDashboard').classList.add('hidden');
+            document.getElementById('userDashboard').classList.add('hidden');
+            document.getElementById('homepage').classList.remove('hidden');
+            currentScreen = "homepage";
+        }
+
+        // Login Function
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'admin' && password === 'admin') {
+                document.getElementById('loginSection').classList.add('hidden');
+                document.getElementById('adminDashboard').classList.remove('hidden');
+                currentScreen = "admin";
+                initializeAdminDashboard();
+            } else if (username === 'user' && password === 'user') {
+                document.getElementById('loginSection').classList.add('hidden');
+                document.getElementById('userDashboard').classList.remove('hidden');
+                currentScreen = "user";
+            } else {
+                alert("Invalid credentials. Please try again.");
+            }
+        }
+
+        // Logout Function
+        function logout() {
+            document.getElementById('adminDashboard').classList.add('hidden');
+            document.getElementById('userDashboard').classList.add('hidden');
+            document.getElementById('homepage').classList.remove('hidden');
+            currentScreen = "homepage";
+        }
+
+        // Initialize Admin Dashboard
+        function initializeAdminDashboard() {
+            // Growth Chart
+            const ctx = document.createElement('canvas');
+            document.getElementById('growthChart').appendChild(ctx);
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Business Growth (in Lakhs ₹)',
+                        data: [65, 59, 80, 81, 56, 55, 72, 78, 85, 90, 95, 110],
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102,126,234,0.1)',
+                        tension: 0.3,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Feedback List
+            const feedbacks = [
+                { name: 'Rahul M.', message: 'Great service! Very fast loan approval.' },
+                { name: 'Priya S.', message: 'The interface is user-friendly and efficient.' },
+                { name: 'Amit K.', message: 'Got my gold loan approved within 2 hours. Amazing service!' },
+                { name: 'Neha J.', message: 'The staff was very helpful in guiding me through the process.' }
+            ];
+
+            const feedbackList = document.getElementById('feedbackList');
+            feedbackList.innerHTML = '';
+            feedbacks.forEach((feedback, index) => {
+                const div = document.createElement('div');
+                div.className = 'p-4 bg-gray-50 rounded slide-in';
+                div.style.animationDelay = `${index * 0.2}s`;
+                div.innerHTML = `
+                    <p class="font-semibold">${feedback.name}</p>
+                    <p class="text-gray-600">${feedback.message}</p>
+                `;
+                feedbackList.appendChild(div);
+            });
+        }
+
+        // Show Loan Application
+        function showLoanApplication() {
+            alert('Loan application form will be shown here');
+        }
+
+        // Toggle Calculators Section
+        function toggleCalculators() {
+            const calculators = document.getElementById('calculators');
+            calculators.classList.toggle('hidden');
+            
+            // Scroll to calculators if showing
+            if (!calculators.classList.contains('hidden')) {
+                calculators.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Calculate EMI
+        function calculateEMI() {
+            const amount = parseFloat(document.getElementById('loanAmount').value);
+            const rate = parseFloat(document.getElementById('interestRate').value);
+            const tenure = parseFloat(document.getElementById('loanTenure').value);
+            
+            if (isNaN(amount) || isNaN(rate) || isNaN(tenure)) {
+                alert('Please enter valid values');
+                return;
+            }
+            
+            // Calculate EMI
+            const monthlyRate = rate / (12 * 100);
+            const emi = amount * monthlyRate * Math.pow(1 + monthlyRate, tenure) / (Math.pow(1 + monthlyRate, tenure) - 1);
+            const totalAmount = emi * tenure;
+            const totalInterest = totalAmount - amount;
+            
+            // Display result
+            const resultDiv = document.getElementById('emiResult');
+            resultDiv.innerHTML = `
+                <p class="font-semibold">Monthly EMI: ₹${emi.toFixed(2)}</p>
+                <p>Total Amount: ₹${totalAmount.toFixed(2)}</p>
+                <p>Total Interest: ₹${totalInterest.toFixed(2)}</p>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+
+        // Calculate Gold Loan
+        function calculateGoldLoan() {
+            const weight = parseFloat(document.getElementById('goldWeight').value);
+            const purity = parseFloat(document.getElementById('goldPurity').value);
+            const rate = parseFloat(document.getElementById('goldRate').value);
+            
+            if (isNaN(weight) || isNaN(rate)) {
+                alert('Please enter valid values');
+                return;
+            }
+            
+            // Calculate gold value based on purity
+            const purityFactor = purity / 24;
+            const goldValue = weight * rate * purityFactor;
+            
+            // Loan amount is typically 75-80% of gold value
+            const loanAmount = goldValue * 0.75;
+            
+            // Display result
+            const resultDiv = document.getElementById('goldLoanResult');
+            resultDiv.innerHTML = `
+                <p class="font-semibold">Gold Value: ₹${goldValue.toFixed(2)}</p>
+                <p>Maximum Loan Amount: ₹${loanAmount.toFixed(2)}</p>
+                <p>Per Gram Value: ₹${(rate * purityFactor).toFixed(2)}</p>
+            `;
+            resultDiv.classList.remove('hidden');
+        }
+
+        // Scroll to loans section
+        function scrollToLoans() {
+            document.getElementById('loans-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Chatbot functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            const chatbotContainer = document.getElementById('chatbotContainer');
+            const closeChatbot = document.getElementById('closeChatbot');
+            const chatInput = document.getElementById('chatInput');
+            const sendMessage = document.getElementById('sendMessage');
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // Toggle chatbot
+            chatbotToggle.addEventListener('click', function() {
+                chatbotContainer.style.display = chatbotContainer.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            // Close chatbot
+            closeChatbot.addEventListener('click', function() {
+                chatbotContainer.style.display = 'none';
+            });
+            
+            // Send message
+            function sendChatMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    // Add user message
+                    addMessage(message, 'user');
+                    chatInput.value = '';
+                    
+                    // Show typing indicator
+                    const typingDiv = document.createElement('div');
+                    typingDiv.className = 'bg-blue-100 p-3 rounded-lg inline-block';
+                    typingDiv.innerHTML = '<div class="loader"></div>';
+                    const messageContainer = document.createElement('div');
+                    messageContainer.className = 'bot-typing';
+                    messageContainer.appendChild(typingDiv);
+                    chatMessages.appendChild(messageContainer);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    
+                    // Simulate bot response after delay
+                    setTimeout(function() {
+                        // Remove typing indicator
+                        const typingIndicator = document.querySelector('.bot-typing');
+                        if (typingIndicator) {
+                            typingIndicator.remove();
+                        }
+                        
+                        // Generate response based on message
+                        let response;
+                        const lowercaseMsg = message.toLowerCase();
+                        
+                        if (lowercaseMsg.includes('loan')) {
+                            response = "We offer various loan products including Home Loans, Personal Loans, Business Loans, and Gold Loans. Would you like to know more about any specific loan?";
+                        } else if (lowercaseMsg.includes('interest') || lowercaseMsg.includes('rate')) {
+                            response = "Our current interest rates are: Home Loan: 7.5%-9.5%, Personal Loan: 8.99%-14%, Business Loan: 11%-16%, Gold Loan: 7%-10.5% depending on the loan amount and tenure.";
+                        } else if (lowercaseMsg.includes('gold')) {
+                            response = "Our Gold Loan offers the best value for your gold jewelry. We provide up to 75% of the gold's value with minimal documentation and quick processing.";
+                        } else if (lowercaseMsg.includes('document') || lowercaseMsg.includes('require')) {
+                            response = "Basic documents required for most loans include ID proof, address proof, income proof, and bank statements. Specific loans may require additional documents.";
+                        } else if (lowercaseMsg.includes('apply')) {
+                            response = "You can apply for a loan by logging into your account and clicking on 'Apply for New Loan'. Alternatively, you can visit our nearest branch.";
+                        } else if (lowercaseMsg.includes('hello') || lowercaseMsg.includes('hi') || lowercaseMsg.includes('hey')) {
+                            response = "Hello! How can I assist you with Bhalchandra Finance services today?";
+                        } else {
+                            response = "Thank you for reaching out. Our customer service team will get back to you shortly. You can also call us at +91 9876543210 for immediate assistance.";
+                        }
+                        
+                        addMessage(response, 'bot');
+                    }, 1500);
+                }
+            }
+            
+            // Add message to chat
+            function addMessage(message, sender) {
+                const messageDiv = document.createElement('div');
+                const alignment = sender === 'user' ? 'ml-auto' : 'mr-auto';
+                const bgColor = sender === 'user' ? 'bg-blue-600 text-white' : 'bg-blue-100 text-gray-800';
+                
+                messageDiv.className = `${bgColor} p-3 rounded-lg max-w-3/4 ${alignment}`;
+                messageDiv.innerHTML = `<p>${message}</p>`;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            sendMessage.addEventListener('click', sendChatMessage);
+            
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendChatMessage();
+                }
+            });
+        });
+    </script>
+<!-- Loan Application Form Section -->
+<!-- Navigation Bar -->
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20">
+      <div class="flex items-center">
+        <div class="flex-shrink-0 flex items-center bg-white p-1 rounded">
+          <img src="logo.jpg" alt="Bhalchandra Logo" class="h-16 w-auto">
+          <span class="ml-3 text-2xl font-bold text-gray-800">Bhalchandra Finance Pvt. Ltd.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Loan Application Form Section -->
+<div id="loanApplicationSection" class="hidden min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+  <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-3xl animate-fadeIn">
+    <div class="mb-6 text-center">
+      <h2 class="text-3xl font-extrabold text-indigo-700">Loan Application Form</h2>
+      <p class="text-gray-600 mt-2">Fill out the details below to apply for a loan tailored to your needs</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Full Name</label>
+        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3" placeholder="John Doe">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Loan Type</label>
+        <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3">
+          <option>Home Loan</option>
+          <option>Business Loan</option>
+          <option>Gold Loan</option>
+          <option>Personal Loan</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Loan Amount (₹)</label>
+        <input type="number" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3" placeholder="500000">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Loan Tenure (months)</label>
+        <input type="number" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3" placeholder="60">
+      </div>
+      <div class="md:col-span-2">
+        <label class="block text-sm font-medium text-gray-700">Purpose</label>
+        <textarea rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3" placeholder="Describe your purpose for loan"></textarea>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-between items-center">
+      <button onclick="submitLoanForm()" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
+        Submit Application
+      </button>
+      <button onclick="backToUserDashboard()" class="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out both;
+  }
+</style>
+
+<script>
+  function showLoanApplication() {
+    document.getElementById('userDashboard').classList.add('hidden');
+    document.getElementById('loanApplicationSection').classList.remove('hidden');
+  }
+
+  function backToUserDashboard() {
+    document.getElementById('loanApplicationSection').classList.add('hidden');
+    document.getElementById('userDashboard').classList.remove('hidden');
+  }
+
+  function submitLoanForm() {
+    alert("Your loan application has been submitted successfully!");
+    backToUserDashboard();
+  }
+</script>
+
+</body>
+</html>

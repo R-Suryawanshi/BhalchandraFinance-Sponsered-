@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feedback Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --bg: #f0f4f8;
+      --font: 'Inter', sans-serif;
+      --text: #1f2937;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%; width: 100%;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 20px;
+    }
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+    }
+    header, footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 24px;
+    }
+    header h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 22px;
+    }
+    form {
+      flex-grow: 1;
+      padding: 32px;
+      max-width: 1200px;
+      margin: 32px auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .group {
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 24px;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 22px;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 14px;
+      font-size: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 100%;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+    .radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .radio-group label {
+      font-weight: 500;
+      font-size: 20px;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+      transform: scale(1.4);
+    }
+    .star-rating {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+      gap: 14px;
+      font-size: 92px;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+    .star-rating input {
+      display: none;
+    }
+    .star-rating label {
+      color: #ccc;
+      transition: color 0.2s;
+    }
+    .star-rating input:checked ~ label,
+    .star-rating label:hover,
+    .star-rating label:hover ~ label {
+      color: gold;
+    }
+    input[type="submit"] {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 18px 40px;
+      border-radius: 8px;
+      font-size: 22px;
+      cursor: pointer;
+      align-self: center;
+      margin-top: 24px;
+    }
+    input[type="submit"]:hover {
+      background: #2c469c;
+    }
+    @media (max-width: 768px) {
+      .row {
+        flex-direction: column;
+      }
+      form {
+        padding: 20px;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+    }
+.custom-footer {
+  background-color: #1e3a8a;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  padding: 40px 20px 20px;
+}
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+.footer-column {
+  flex: 1 1 220px;
+  margin: 20px;
+}
+.footer-column h4 {
+  font-size: 16px;
+  color: #18BC9C;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #18BC9C;
+  padding-bottom: 5px;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-column ul li {
+  margin: 8px 0;
+}
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-column ul li a:hover {
+  color: #18BC9C;
+}
+.footer-column p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.social-icons a {
+  display: inline-block;
+  margin: 0 5px;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+.social-icons a:hover {
+  color: #18BC9C;
+}
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 30px;
+  border-top: 1px solid #18BC9C;
+  padding-top: 10px;
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Customer Feedback</h1>
+      <p>Your feedback matters—please let us know how we did!</p>
+    </header>
+
+    <form action="feedback.php" method="post">
+      <div class="row">
+  <div class="group">
+    <label for="first">First Name (पहिले नाव)</label>
+    <input id="first" name="firstname" type="text" required>
+  </div>
+  <div class="group">
+    <label for="last">Last Name (आडनाव)</label>
+    <input id="last" name="lastname" type="text" required>
+  </div>
+  <div class="group">
+    <label for="email">Email Address (ईमेल पत्ता)</label>
+    <input id="email" name="email" type="email" required>
+  </div>
+</div>
+      <div class="group">
+        <label>Service Used (सेवा निवडा)</label>
+        <div class="radio-group">
+          <label><input type="radio" name="service" value="Personal Loan" required> Personal Loan (वैयक्तिक कर्ज)</label>
+          <label><input type="radio" name="service" value="Gold Loan"> Gold Loan (सोनेतून कर्ज)</label>
+          <label><input type="radio" name="service" value="Business Loan"> Business Loan (व्यवसाय कर्ज)</label>
+          <label><input type="radio" name="service" value="Other"> Other (इतर)</label>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Service Quality (सेवेची गुणवत्ता)</label>
+        <div class="star-rating">
+          <input type="radio" id="sq5" name="quality" value="5"><label for="sq5">&#9733;</label>
+          <input type="radio" id="sq4" name="quality" value="4"><label for="sq4">&#9733;</label>
+          <input type="radio" id="sq3" name="quality" value="3"><label for="sq3">&#9733;</label>
+          <input type="radio" id="sq2" name="quality" value="2"><label for="sq2">&#9733;</label>
+          <input type="radio" id="sq1" name="quality" value="1"><label for="sq1">&#9733;</label>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Transparency in Process (प्रक्रियेत पारदर्शकता)</label>
+        <div class="star-rating">
+          <input type="radio" id="tp5" name="transparency" value="5"><label for="tp5">&#9733;</label>
+          <input type="radio" id="tp4" name="transparency" value="4"><label for="tp4">&#9733;</label>
+          <input type="radio" id="tp3" name="transparency" value="3"><label for="tp3">&#9733;</label>
+          <input type="radio" id="tp2" name="transparency" value="2"><label for="tp2">&#9733;</label>
+          <input type="radio" id="tp1" name="transparency" value="1"><label for="tp1">&#9733;</label>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Documentation Process (कागदपत्र प्रक्रिया)</label>
+        <div class="star-rating">
+          <input type="radio" id="dp5" name="documentation" value="5"><label for="dp5">&#9733;</label>
+          <input type="radio" id="dp4" name="documentation" value="4"><label for="dp4">&#9733;</label>
+          <input type="radio" id="dp3" name="documentation" value="3"><label for="dp3">&#9733;</label>
+          <input type="radio" id="dp2" name="documentation" value="2"><label for="dp2">&#9733;</label>
+          <input type="radio" id="dp1" name="documentation" value="1"><label for="dp1">&#9733;</label>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Time Taken for Approval (मंजुरीसाठी लागलेला वेळ)</label>
+        <div class="star-rating">
+          <input type="radio" id="ta5" name="timing" value="5"><label for="ta5">&#9733;</label>
+          <input type="radio" id="ta4" name="timing" value="4"><label for="ta4">&#9733;</label>
+          <input type="radio" id="ta3" name="timing" value="3"><label for="ta3">&#9733;</label>
+          <input type="radio" id="ta2" name="timing" value="2"><label for="ta2">&#9733;</label>
+          <input type="radio" id="ta1" name="timing" value="1"><label for="ta1">&#9733;</label>
+        </div>
+      </div>
+
+      <div class="group">
+        <label>Overall Satisfaction (एकूण समाधान)</label>
+        <div class="star-rating">
+          <input type="radio" id="os5" name="satisfaction" value="5"><label for="os5">&#9733;</label>
+          <input type="radio" id="os4" name="satisfaction" value="4"><label for="os4">&#9733;</label>
+          <input type="radio" id="os3" name="satisfaction" value="3"><label for="os3">&#9733;</label>
+          <input type="radio" id="os2" name="satisfaction" value="2"><label for="os2">&#9733;</label>
+          <input type="radio" id="os1" name="satisfaction" value="1"><label for="os1">&#9733;</label>
+        </div>
+      </div>
+
+      <div class="group">
+        <label for="comments">Additional Comments (अतिरिक्त प्रतिक्रिया)</label>
+        <textarea id="comments" name="comments"></textarea>
+      </div>
+
+      <input type="submit" value="Submit Feedback">
+      <p style="text-align:center; margin-top:24px;">Thank you for helping us improve! (आपल्या अभिप्रायाबद्दल धन्यवाद!)</p>
+    </form>
+
+<!-- Footer -->
+<footer class="custom-footer mt-12">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Important Links</h4>
+      <ul>
+        <li><a href="https://www.rbi.org.in/commonperson/english/scripts/Notification.aspx?Id=900" target="_blank" rel="noopener noreferrer">RBI Guidelines</a></li>
+        <li><a href="#">KYC Policy</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="interest.html">Interest Rates</a></li>
+        <li><a href="#">Download Forms</a></li>
+        <li><a href="#">Contact Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="home.html">Home Page</a></li>
+        <li><a href="loan.html">Loan Application Form</a></li>
+        <li><a href="about us.html">About Us</a></li>
+        <li><a href="Feedback.html">Feedback</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Contact Info</h4>
+      <p>
+        Bhalchandra Finance Pvt. Ltd.<br>
+        Jintur, Parbhani, Maharashtra<br>
+        Phone: +91-9422547906<br>
+        Email: info@bhalfinance.in
+      </p>
+      <div class="social-icons">
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-instagram"></i></a>
+        <a href="#"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Bhalchandra Finance Ltd. All Rights Reserved.
+  </div>
+</footer>
+
+
+  </div>
+
+  <script>
+  document.querySelector("form").addEventListener("submit", function (e) {
+    const email = document.getElementById("email").value.trim();
+    const first = document.getElementById("first").value.trim();
+    const last = document.getElementById("last").value.trim();
+
+    if (!first || !last || !email) {
+      alert("Please fill in all required fields.");
+      e.preventDefault();
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address.");
+      e.preventDefault();
+      return;
+    }
+
+    const radioGroups = ["service", "quality", "transparency", "documentation", "timing", "satisfaction"];
+    for (let group of radioGroups) {
+      if (!document.querySelector(`input[name="${group}"]:checked`)) {
+        alert(`Please select an option for: ${group}`);
+        e.preventDefault();
+        return;
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

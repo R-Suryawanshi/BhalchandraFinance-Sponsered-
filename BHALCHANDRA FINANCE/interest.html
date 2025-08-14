@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interest Rates</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      color: #1f2937;
+    }
+    .custom-footer {
+      background-color: #1e3a8a;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      padding: 40px 20px 20px;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .footer-column {
+      flex: 1 1 220px;
+      margin: 20px;
+    }
+    .footer-column h4 {
+      font-size: 16px;
+      color: #18BC9C;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #18BC9C;
+      padding-bottom: 5px;
+    }
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-column ul li {
+      margin: 8px 0;
+    }
+    .footer-column ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-column ul li a:hover {
+      color: #18BC9C;
+    }
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 30px;
+      border-top: 1px solid #18BC9C;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<nav class="bg-white shadow p-4 mb-6">
+  <div class="max-w-screen-xl mx-auto flex justify-between items-center">
+    <div class="flex items-center">
+      <img src="logo.jpg" alt="Bhalchandra Logo" class="h-12 w-auto mr-3">
+      <h1 class="text-2xl font-bold text-gray-800">Interest Rates</h1>
+    </div>
+    <a href="home.html" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 text-sm">Home</a>
+  </div>
+</nav>
+
+<!-- Interest Rates Table -->
+<main class="max-w-screen-lg mx-auto px-4">
+  <div class="bg-white rounded-lg shadow p-6">
+    <h2 class="text-3xl font-bold mb-4 text-blue-800">Current Interest Rates</h2>
+    <p class="mb-6 text-gray-700">Below are the latest interest rates applicable on our loan products:</p>
+    
+    <table class="w-full border-collapse border border-gray-300">
+      <thead class="bg-blue-100">
+        <tr>
+          <th class="border border-gray-300 px-4 py-2 text-left">Loan Type</th>
+          <th class="border border-gray-300 px-4 py-2 text-left">Interest Rate (p.a.)</th>
+          <th class="border border-gray-300 px-4 py-2 text-left">Processing Fees</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hover:bg-gray-50">
+          <td class="border px-4 py-2">Personal Loan</td>
+          <td class="border px-4 py-2">11.99% – 18.00%</td>
+          <td class="border px-4 py-2">Up to 2%</td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+          <td class="border px-4 py-2">Gold Loan</td>
+          <td class="border px-4 py-2">7.00% – 12.50%</td>
+          <td class="border px-4 py-2">Flat ₹200</td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+          <td class="border px-4 py-2">Business Loan</td>
+          <td class="border px-4 py-2">13.50% – 20.00%</td>
+          <td class="border px-4 py-2">1.5% of loan amount</td>
+        </tr>
+        <tr class="hover:bg-gray-50">
+          <td class="border px-4 py-2">Education Loan</td>
+          <td class="border px-4 py-2">9.75% – 14.00%</td>
+          <td class="border px-4 py-2">Nil</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="mt-6 text-sm text-gray-600">*Rates are indicative and subject to change without prior notice. Final rates will depend on applicant’s profile and creditworthiness.</p>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="custom-footer mt-12">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Important Links</h4>
+      <ul>
+        <li><a href="https://www.rbi.org.in/commonperson/english/scripts/Notification.aspx?Id=900" target="_blank">RBI Guidelines</a></li>
+        <li><a href="#">KYC Policy</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="interest.html">Interest Rates</a></li>
+        <li><a href="#">Download Forms</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="home.html">Home Page</a></li>
+        <li><a href="loan.html">Loan Application Form</a></li>
+        <li><a href="about us.html">About Us</a></li>
+        <li><a href="Feedback.html">Feedback</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Contact Info</h4>
+      <p>
+        Bhalchandra Finance Pvt. Ltd.<br>
+        Jintur, Parbhani, Maharashtra<br>
+        Phone: +91-9422547906<br>
+        Email: info@bhalfinance.in
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Bhalchandra Finance Ltd. All Rights Reserved.
+  </div>
+</footer>
+
+</body>
+</html>

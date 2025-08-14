@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loan Application</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+      color: #1f2937;
+      font-size: 22px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    .form-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .form-button {
+      background-color: #1d4ed8;
+      color: white;
+      padding: 16px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 22px;
+      margin-top: 30px;
+    }
+    .form-button:hover {
+      background-color: #2563eb;
+    }
+    input, textarea, select {
+      font-size: 20px;
+    }
+.custom-footer {
+  background-color: #1e3a8a;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  padding: 40px 20px 20px;
+}
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+.footer-column {
+  flex: 1 1 220px;
+  margin: 20px;
+}
+.footer-column h4 {
+  font-size: 16px;
+  color: #18BC9C;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #18BC9C;
+  padding-bottom: 5px;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-column ul li {
+  margin: 8px 0;
+}
+.footer-column ul li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-column ul li a:hover {
+  color: #18BC9C;
+}
+.footer-column p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.social-icons a {
+  display: inline-block;
+  margin: 0 5px;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+.social-icons a:hover {
+  color: #18BC9C;
+}
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 30px;
+  border-top: 1px solid #18BC9C;
+  padding-top: 10px;
+}
+
+
+  </style>
+</head>
+<body>
+  <nav class="bg-white shadow-lg mb-6 p-4 rounded-lg">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center">
+        <img src="logo.jpg" alt="Bhalchandra Logo" class="h-16 w-auto bg-white p-1 rounded">
+        <h1 class="text-3xl font-bold text-gray-800 ml-4">Loan Application / कर्ज अर्ज</h1>
+      </div>
+      <div class="flex space-x-4">
+        <button onclick="window.location.href='index.html'" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300 text-xl">Back / मागे</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="form-container">
+    <form action="#" method="POST">
+      <h2 class="text-2xl font-bold text-blue-700 mb-6">Loan Application Form / कर्ज अर्ज फॉर्म</h2>
+
+      <div class="section-title">1. Personal Details / वैयक्तिक माहिती</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input type="text" placeholder="Full Name / पूर्ण नाव" name="fullName" class="border p-3 rounded" required />
+        <input type="date" placeholder="Date of Birth / जन्म तारीख" name="dob" class="border p-3 rounded" required />
+        <input type="text" placeholder="Gender / लिंग" name="gender" class="border p-3 rounded" required />
+        <input type="text" placeholder="Number of Dependents / अवलंबितांची संख्या" name="dependents" class="border p-3 rounded" required />
+      </div>
+
+      <div class="section-title">2. Identity / ओळख</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input type="text" placeholder="ID Type / ओळखीचा पुरावा प्रकार (उदा. पासपोर्ट, आधार)" name="idType" class="border p-3 rounded" required />
+        <input type="text" placeholder="ID Number / ओळखीचा पुरावा क्रमांक" name="idNumber" class="border p-3 rounded" required />
+        <input type="date" placeholder="Date of Issue / जारी तारीख" name="idIssue" class="border p-3 rounded" required />
+        <input type="date" placeholder="Expiry Date / कालबाह्यता तारीख" name="idExpiry" class="border p-3 rounded" required />
+      </div>
+
+      <div class="section-title">3. Business Details / व्यवसाय माहिती</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input type="text" placeholder="Name of Business / व्यवसायाचे नाव" name="businessName" class="border p-3 rounded" />
+        <input type="text" placeholder="Location of Business / व्यवसायाचे ठिकाण" name="businessLocation" class="border p-3 rounded" />
+        <input type="number" placeholder="Years in Business / व्यवसायातील वर्षे" name="yearsBusiness" class="border p-3 rounded" />
+        <input type="text" placeholder="Capital / भांडवली गुंतवणूक" name="capital" class="border p-3 rounded" />
+      </div>
+
+      <div class="section-title">4. Employment Details / रोजगार माहिती</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input type="text" placeholder="Employer Name / नोकरीचे ठिकाण" name="employer" class="border p-3 rounded" />
+        <input type="text" placeholder="Position / पद" name="position" class="border p-3 rounded" />
+        <input type="text" placeholder="Years with Employer / नोकरीतील वर्षे" name="yearsEmployer" class="border p-3 rounded" />
+        <input type="number" placeholder="Net Salary / निव्वळ पगार" name="salary" class="border p-3 rounded" />
+      </div>
+
+      <div class="section-title">5. Loan Details / कर्ज तपशील</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input type="number" placeholder="Loan Amount / मागितलेले कर्ज रक्कम" name="loanAmount" class="border p-3 rounded" required />
+        <input type="text" placeholder="Maturity / मुदतीचा कालावधी" name="maturity" class="border p-3 rounded" />
+        <input type="text" placeholder="Capacity / क्षमता" name="capacity" class="border p-3 rounded" />
+        <input type="text" placeholder="Collateral / हमी" name="collateral" class="border p-3 rounded" />
+      </div>
+
+      <div class="section-title">6. Direction / दिशानिर्देश</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <textarea name="directionWork" class="border p-3 rounded" placeholder="Direction to Workplace / कामाच्या ठिकाणी जाण्याचा मार्ग"></textarea>
+        <textarea name="directionHome" class="border p-3 rounded" placeholder="Direction to Residence / घरी जाण्याचा मार्ग"></textarea>
+      </div>
+
+      <div class="section-title">7. Declaration / जाहीरनामा</div>
+      <textarea name="declaration" class="border p-3 rounded w-full" rows="4" placeholder="Declaration content here... / इथे आपला जाहीरनामा लिहा" required></textarea>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <input type="text" placeholder="Signature / सही किंवा अंगठा impression" name="signature" class="border p-3 rounded" required />
+        <input type="date" placeholder="Date / दिनांक" name="signatureDate" class="border p-3 rounded" required />
+      </div>
+
+      <button type="submit" class="form-button">Submit Application / अर्ज सबमिट करा</button>
+    </form>
+
+  </div>
+<!-- Footer -->
+<footer class="custom-footer mt-12">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h4>Important Links</h4>
+      <ul>
+        <li><a href="https://www.rbi.org.in/commonperson/english/scripts/Notification.aspx?Id=900" target="_blank" rel="noopener noreferrer">RBI Guidelines</a></li>
+        <li><a href="#">KYC Policy</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms & Conditions</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="interest.html">Interest Rates</a></li>
+        <li><a href="#">Download Forms</a></li>
+        <li><a href="#">Contact Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="home.html">Home Page</a></li>
+        <li><a href="loan.html">Loan Application Form</a></li>
+        <li><a href="about us.html">About Us</a></li>
+        <li><a href="Feedback.html">Feedback</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h4>Contact Info</h4>
+      <p>
+        Bhalchandra Finance Pvt. Ltd.<br>
+        Jintur, Parbhani, Maharashtra<br>
+        Phone: +91-9422547906<br>
+        Email: info@bhalfinance.in
+      </p>
+      <div class="social-icons">
+        <a href="#"><i class="bx bxl-facebook"></i></a>
+        <a href="#"><i class="bx bxl-twitter"></i></a>
+        <a href="#"><i class="bx bxl-instagram"></i></a>
+        <a href="#"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 Bhalchandra Finance Ltd. All Rights Reserved.
+  </div>
+</footer>
+
+
+
+</body>
+</html>
